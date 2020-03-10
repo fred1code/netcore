@@ -1,20 +1,25 @@
 using System;
-using aspnetcore.Models;
 using Microsoft.AspNetCore.Mvc;
+using platzi_asp_net_core.Models;
 
-namespace aspnetcore.Controllers {
-    public class EscuelaController : Controller {
+namespace platzi_asp_net_core.Controllers
+{
+    public class EscuelaController : Controller
+    {
+        public IActionResult Index()
+        {
+            var escuela = new Escuela();
+            escuela.AñoDeCreación = 2005;
+            escuela.UniqueId = Guid.NewGuid().ToString();
+            escuela.Nombre = "Platzi School";
+            escuela.Ciudad = "Bogota";
+            escuela.Pais = "Colombia";
+            escuela.Dirección = "Avd Siempre viva";
+            escuela.TipoEscuela = TiposEscuela.Secundaria;
 
-        public IActionResult Index () {
-            var escuela = new Escuela ();
-            escuela.AnioFundacion = 2005;
-            escuela.EscuelaId = Guid.NewGuid ().ToString ();
-            escuela.Nombre = "Escuela de prueba";
+            ViewBag.CosaDinamica = "La Monja";
 
-
-ViewBag.CosaDinamica="bolsa dinamica";
-            return View (escuela);
+            return View(escuela);
         }
-
     }
 }
